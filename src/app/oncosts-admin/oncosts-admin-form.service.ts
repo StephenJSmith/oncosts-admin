@@ -46,6 +46,8 @@ export class OncostsAdminFormService {
     const other = currentAdmin.get('other') as FormArray;
     this.replaceOncostItems(other, oncostsAdmin.other);
 
+    currentAdmin.markAsPristine();
+
     this.adminForm.next(currentAdmin);
   }
 
@@ -84,6 +86,7 @@ export class OncostsAdminFormService {
 
   saveChanges() {
     this.lastSavedAdmin = this.adminForm.getValue().value;
+    this.adminForm.getValue().markAsPristine();
   }
 
   revertToLastSavedChange() {
